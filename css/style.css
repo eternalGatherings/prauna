@@ -398,8 +398,8 @@ h6 {
 
 @media screen and (max-width:1140px) {
   .banner-blocks {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(6, 1fr);
   }
 
   /* .block-1 {
