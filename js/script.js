@@ -150,3 +150,44 @@
   }); // End of a document
 
 })(jQuery);
+
+
+document.querySelectorAll('.get-quote-cu').forEach(button => {
+  button.addEventListener('click', function(e) {
+    e.preventDefault();
+    const productItem = this.closest('.product-item');
+    const title = productItem.querySelector('h3').innerText;
+    const price = productItem.querySelector('.price').innerText;
+    const image = productItem.querySelector('img').getAttribute('src');
+
+    const details1 = productItem.querySelector('.material-details-cu.detail-1')?.innerHTML || '';
+    const details2 = productItem.querySelector('.material-details-cu.detail-2')?.innerHTML || '';
+    const details3 = productItem.querySelector('.material-details-cu.detail-3')?.innerHTML || '';
+
+    document.getElementById('modalTitle').innerText = title;
+    document.getElementById('modalPrice').innerText = price;
+    document.getElementById('modalImage').setAttribute('src', image);
+
+    document.getElementById('modeldetails-1').innerHTML = details1;
+    document.getElementById('modeldetails-2').innerHTML = details2;
+    document.getElementById('modeldetails-3').innerHTML = details3;
+
+    const textdetails1 = details1?.replace("<strong>", "*").replace("</strong>", "*") || '';
+    const textdetails2 = details2?.replace("<strong>", "*").replace("</strong>", "*") || '';
+    const textdetails3 = details3?.replace("<strong>", "*").replace("</strong>", "*") || '';
+
+    let finalLinkDetails = '';
+    if (textdetails1) finalLinkDetails += `\n\nDetails\n• ${textdetails1}`;
+    if (textdetails2) finalLinkDetails += `\n• ${textdetails2}`;
+    if (textdetails3) finalLinkDetails += `\n• ${textdetails3}`;
+
+    // WhatsApp message
+    const message = `Hi, I'm interested in the product\n\n*Title*: ${title}\n*Price*: ${price}${finalLinkDetails}\n\nPlease provide more details.`;
+    const whatsappURL = `https://wa.me/918746944770?text=${encodeURIComponent(message)}`; // Replace with your number
+    document.getElementById('whatsappBtn').setAttribute('href', whatsappURL);
+
+    // Show modal
+    const quoteModal = new bootstrap.Modal(document.getElementById('quoteModal'));
+    quoteModal.show();
+  });
+});

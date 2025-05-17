@@ -813,3 +813,22 @@ gap: 25px;
     height: 740px;
   }
 }
+
+.popup-img-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.popup-details {
+  padding-left: 20px;
+  margin-bottom: 15px;
+  text-align: left;
+  border-left: 1px solid #dadada;
+}
+
+.popup-img-details img {
+  margin-right: 20px;
+  border-radius: 12px;
+}
